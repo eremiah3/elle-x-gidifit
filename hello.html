@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samuel & Sarah — Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600&family=Cormorant+Garamond:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0d001a 0%, #1a0f2e 100%);
+      min-height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Cormorant Garamond', serif;
+      padding: 10px;
+    }
+
+    .envelope-container {
+      position: relative;
+      width: 90vw;
+      max-width: 1100px;
+      aspect-ratio: 9 / 16;
+      max-height: 94dvh;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    .envelope-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 3.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      will-change: transform;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .envelope-body {
+      z-index: 1;
+    }
+
+    .flap-group {
+      z-index: 2;
+    }
+
+    .invitation-card {
+      z-index: 4;
+    }
+
+    .opening .envelope-body {
+      transform: translateX(-120vw);
+    }
+
+    .opening .flap-group {
+      transform: translateX(120vw);
+    }
+
+    .wax-seal {
+      position: absolute;
+      width: clamp(60%, 64%, 68%);
+      height: clamp(60%, 64%, 68%);
+      bottom: 4%;
+      left: 45%;
+      transform: translateX(-40%) translateY(-15%);
+      cursor: pointer;
+      transition: transform 0.8s ease;
+      z-index: 5;
+    }
+
+    .wax-seal:hover {
+      transform: translateX(-50%) translateY(-28%) scale(1.15) rotate(6deg);
+    }
+
+    .invitation-card {
+      position: absolute;
+      inset: 10% 6% auto 6%;
+      width: 88%;
+      max-width: 720px;
+      margin: auto;
+      padding: clamp(35px, 6vw, 65px) clamp(25px, 5vw, 50px);
+      background: linear-gradient(135deg, #0f0820, #1e1435);
+      border: 2px solid #d4af37;
+      border-radius: 14px;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      transform: scale(0.78) translateY(50px);
+      transition: all 3.2s cubic-bezier(0.34, 1.56, 0.64, 1) 1.4s;
+      text-align: center;
+      color: #f8f1e2;
+      pointer-events: none;
+    }
+
+    .opening .invitation-card {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      pointer-events: auto;
+    }
+
+    .subtitle {
+      font-size: clamp(15px, 2.8vw, 19px);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #c9a96e;
+      margin-bottom: 0.6em;
+    }
+
+    .title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(48px, 10vw, 80px);
+      color: #d4af37;
+      line-height: 0.9;
+      margin: 0.1em 0 0.4em;
+    }
+
+    .couple {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 8vw, 58px);
+      font-weight: 600;
+      color: #f8f1e2;
+      margin: 0.5em 0;
+    }
+
+    .ampersand {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(45px, 9vw, 75px);
+      color: #d4af37;
+      display: block;
+      margin: -0.2em 0 0.1em;
+    }
+
+    .details {
+      font-size: clamp(16px, 3vw, 19px);
+      line-height: 1.6;
+      margin: 1.3em 0;
+    }
+
+    .details strong {
+      color: #d4af37;
+    }
+
+    .rsvp {
+      margin-top: 1em;
+      font-style: italic;
+      color: #c9a96e;
+      font-size: clamp(14px, 2.6vw, 17px);
+    }
+
+    @media (min-width: 768px) {
+      .envelope-container {
+        aspect-ratio: 1125 / 2000;
+        width: 60vw;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .envelope-container {
+        width: 94vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="envelope-container" id="envelope">
+    <div class="envelope-layer envelope-body">
+      <img src="body_1.png" alt="Envelope Body">
+    </div>
+    <div class="envelope-layer flap-group">
+      <img src="flap_1.png" alt="Flap">
+      <div class="wax-seal" id="seal">
+        <img src="wax_seal.png" alt="Wax Seal">
+      </div>
+    </div>
+    <div class="invitation-card">
+      <div class="subtitle">YOU ARE INVITED TO THE WEDDING OF</div>
+      <h1 class="title">Our Wedding</h1>
+      <div class="couple">
+        Samuel Clinton
+        <span class="ampersand">&</span>
+        Sarah Gold
+      </div>
+      <div class="details">
+        <strong>SATURDAY, JUNE 30, 2024</strong><br>
+        10:00 AM GMT<br><br>
+        <strong>VENUE:</strong> Family Prance Assemblies of God<br>
+        Marvile Homes, Spintex
+      </div>
+      <!-- <div class="rsvp">
+      RSVP: 0245634852 (Mrs Racheal) | 02482936014 (Dr Martins Irelan)
+    </div> -->
+    </div>
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="Lewis_Capaldi_-_Some_You_Loved_CeeNaija.com_.mp3" type="audio/mp3">
+  </audio>
+  <script>
+    const container = document.getElementById('envelope');
+    const seal = document.getElementById('seal');
+    const music = document.getElementById('bgMusic');
+    let isOpen = false;
+    function openEnvelope() {
+      if (isOpen) return;
+      isOpen = true;
+      container.classList.add('opening');
+      seal.style.pointerEvents = 'none';
+      music.volume = 0.30;
+      music.play().catch(() => { });
+    }
+    seal.addEventListener('click', openEnvelope);
+    document.addEventListener('keydown', e => {
+      if (!isOpen && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        openEnvelope();
+      }
+    });
+  </script>
+</body>
+
+</html>
